@@ -47,6 +47,16 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	
+	  <!-- Chang URLs to wherever Video.js files will be hosted -->
+  <link href="video-js.css" rel="stylesheet" type="text/css">
+  <!-- video.js must be in the <head> for older IEs to work. -->
+  <script src="video.js"></script>
+
+  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+  <script>
+    videojs.options.flash.swf = "video-js.swf";
+	
+  </script>
   </head>
 
   <body>
@@ -60,10 +70,55 @@
               <a class="navbar-link page-scroll" href="Video.html">Video</a>
               <a class="navbar-link page-scroll" href="images.html">Images</a>
               <a class="navbar-link page-scroll" href="music.html">Music</a>
-              <a class="navbar-link page-scroll" href="lit.html">Literature</a>
 			  <a class="navbar-link page-scroll" href="http://node1.metadisk.org" TARGET="_NEW">Upload</a>	
             </div>
           </nav>
+          <div style="width:768px; margin:30px auto;">
+    <div style="margin:20px 0;">
+    Music Source: <input id="musicURL" style="width:640;" value="http://node1.storj.io/api/download/a07b4fdd12a56a7a78e61ce12b1a1c4327bb9d46a26d3ce1a5911ee64d2097d5?key=8806e8ec8e263a100cdcb472177cfbd7bd83979a118e0ae1abd2f27abee259c4&token=gSaTzPwhOI8FELor"> <button id="videoUrlSubmit">OK</button>
+    </div>
+        <source id="musicSource" src="http://node1.storj.io/api/download/a07b4fdd12a56a7a78e61ce12b1a1c4327bb9d46a26d3ce1a5911ee64d2097d5?key=8806e8ec8e263a100cdcb472177cfbd7bd83979a118e0ae1abd2f27abee259c4&token=gSaTzPwhOI8FELor" type='video/mp4' />
+       
+       
+      </music>
+</div> 
+<script>
+    videojs.options.flash.swf = "video-js.swf";
+	var video = _V_("example_video_1");
+	var videoElement = document.getElementById("example_video_1");
+	var input = document.getElementById("musicURL");
+	var btn = document.getElementById("videoUrlSubmit");
+	input.addEventListener("keyup", function(e){
+		
+		if(e.which == 13){
+			video.src({ type: "video/mp4", src: input.value });
+			video.load();
+			video.ready(function () {
+				video.play();
+			});
+		}
+	});
+	btn.addEventListener("click", function(e){
+		video.src({ type: "video/mp4", src: input.value });
+			video.load();
+			video.ready(function () {
+				video.play();
+			});
+		
+	});
+  </script>  
+  <!-- Begin AudioJS -->
+    <audio class="audio-js" controls preload>
+      <source id="musicSource" src="http://node1.metadisk.org/api/download/b36259bd9638b91a7d7b74ff6146077ef12f6a617c6db03bf69f6556e8197a11?key=4af2fb907a20490cc45d6c6482432bb4296cabdeefc428e7a9e3e1f88758a5e8&token=TfOeOfhpAuZyE7iB"> <button id="videoUrlSubmit">OK</button>
+    </audio>
+  <!-- End AudioJS -->
+
+          
+        </div>
+      </div>
+    </div>
+
+
     <div class="contact" id="contact">
       <div class="container">
         <div class="row">
